@@ -1,0 +1,357 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Foundation ─────────────────────────────────────────────────────────── */
+
+:root {
+  --bg: #f2f2f7;
+  --bg-elevated: #ffffff;
+  --text-primary: #1c1c1e;
+  --text-secondary: #8e8e93;
+  --text-tertiary: #aeaeb2;
+  --separator: rgba(60, 60, 67, 0.08);
+  --separator-bold: rgba(60, 60, 67, 0.15);
+  --blue: #007aff;
+  --blue-hover: #0066d6;
+  --blue-bg: rgba(0, 122, 255, 0.08);
+  --blue-bg-solid: #e8f1fd;
+  --green: #30d158;
+  --green-bg: rgba(48, 209, 88, 0.1);
+  --green-text: #248a3d;
+  --amber: #ff9f0a;
+  --amber-bg: rgba(255, 159, 10, 0.1);
+  --amber-text: #c27400;
+  --red: #ff3b30;
+  --gray-fill: rgba(120, 120, 128, 0.08);
+  --gray-fill-2: rgba(120, 120, 128, 0.16);
+  --radius-sm: 0.625rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.5rem;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Helvetica Neue", system-ui, sans-serif;
+  line-height: 1.47;
+  letter-spacing: -0.022em;
+  margin: 0;
+}
+
+
+/* ─── Card ───────────────────────────────────────────────────────────────── */
+
+.card {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow:
+    0 0 0 0.5px rgba(0, 0, 0, 0.04),
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    0 0.5px 2px rgba(0, 0, 0, 0.06);
+}
+
+
+/* ─── Primary Button ─────────────────────────────────────────────────────── */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--blue);
+  color: white;
+  padding: 0.875rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 1.0625rem;
+  letter-spacing: -0.022em;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-primary:hover {
+  background: var(--blue-hover);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+
+/* ─── Task Badge ─────────────────────────────────────────────────────────── */
+
+.task-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--blue);
+  background: var(--blue-bg);
+  padding: 0.25rem 0.625rem;
+  border-radius: 6px;
+}
+
+
+/* ─── Info Blocks (Briefing) ─────────────────────────────────────────────── */
+
+.info-block {
+  background: var(--gray-fill);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.125rem;
+}
+
+.info-block h3 {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.01em;
+}
+
+.info-block p,
+.info-block li {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+
+/* ─── Chat Bubbles ───────────────────────────────────────────────────────── */
+
+.bubble-ai {
+  background: var(--gray-fill-2);
+  color: var(--text-primary);
+  border-radius: 1.125rem 1.125rem 1.125rem 0.375rem;
+  padding: 0.6875rem 0.9375rem;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  max-width: 78%;
+  word-wrap: break-word;
+}
+
+.bubble-user {
+  background: var(--blue);
+  color: white;
+  border-radius: 1.125rem 1.125rem 0.375rem 1.125rem;
+  padding: 0.6875rem 0.9375rem;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  max-width: 78%;
+  word-wrap: break-word;
+}
+
+
+/* ─── Mic Button ─────────────────────────────────────────────────────────── */
+
+.mic-btn {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+
+.mic-btn:not(:disabled):hover {
+  transform: scale(1.04);
+}
+
+.mic-btn.idle {
+  background: var(--blue);
+  box-shadow:
+    0 4px 16px rgba(0, 122, 255, 0.3),
+    0 1px 4px rgba(0, 122, 255, 0.2);
+}
+
+.mic-btn.recording {
+  background: var(--red);
+  transform: scale(1.08);
+  box-shadow:
+    0 0 0 6px rgba(255, 59, 48, 0.12),
+    0 4px 16px rgba(255, 59, 48, 0.3);
+  animation: pulse-ring 1.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.mic-btn.waiting {
+  background: var(--text-tertiary);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+@keyframes pulse-ring {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(255, 59, 48, 0.15), 0 4px 16px rgba(255, 59, 48, 0.3); }
+  50%      { box-shadow: 0 0 0 14px rgba(255, 59, 48, 0.03), 0 4px 16px rgba(255, 59, 48, 0.3); }
+}
+
+
+/* ─── Results ────────────────────────────────────────────────────────────── */
+
+.result-item {
+  padding: 0.75rem 0;
+  border-bottom: 0.5px solid var(--separator);
+}
+
+.result-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.result-item:first-child {
+  padding-top: 0;
+}
+
+.level-badge {
+  display: inline-flex;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+  padding: 0.125rem 0.4375rem;
+  border-radius: 5px;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.level-badge.can {
+  background: var(--green-bg);
+  color: var(--green-text);
+}
+
+.level-badge.not-yet {
+  background: var(--amber-bg);
+  color: var(--amber-text);
+}
+
+.level-badge.not-tested {
+  background: var(--gray-fill);
+  color: var(--text-tertiary);
+}
+
+
+/* ─── Spinner ────────────────────────────────────────────────────────────── */
+
+.spinner {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  border: 2.5px solid var(--separator-bold);
+  border-top-color: var(--blue);
+  animation: spin 0.7s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
+/* ─── Progress Bar ───────────────────────────────────────────────────────── */
+
+.progress-track {
+  height: 3px;
+  background: var(--separator-bold);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--blue);
+  border-radius: 9999px;
+  transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+
+/* ─── Frosted Top Bar ────────────────────────────────────────────────────── */
+
+.bar-frosted {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 0.5px solid var(--separator);
+}
+
+
+/* ─── Descriptor Toggle ──────────────────────────────────────────────────── */
+
+.descriptor-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.descriptor-toggle .chevron {
+  transition: transform 0.2s ease;
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+}
+
+.descriptor-toggle .chevron.open {
+  transform: rotate(180deg);
+}
+
+
+/* ─── Level Confirmation Bars ────────────────────────────────────────────── */
+
+.confirm-track {
+  height: 6px;
+  background: var(--gray-fill-2);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.confirm-fill {
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.4s ease;
+}
+
+.confirm-fill.confirmed {
+  background: var(--green);
+}
+
+.confirm-fill.partial {
+  background: var(--amber);
+}
+
+.confirm-fill.none {
+  background: var(--text-tertiary);
+}
+
+
+/* ─── Fade-in animation ──────────────────────────────────────────────────── */
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
