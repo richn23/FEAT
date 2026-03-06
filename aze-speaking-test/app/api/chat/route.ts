@@ -252,8 +252,8 @@ export async function POST(req: NextRequest) {
 
         for (const lc of TASK1.levelClusters) {
           const canCount = lc.macroIds.filter((id) => {
-            const r = resultsMap.get(id);
-            return r && r.result === "CAN";
+            const r = resultsMap.get(id) as { result: string } | undefined;
+return r && r.result === "CAN";
           }).length;
           const confirmed = canCount >= lc.confirmThreshold;
           levelResults.push({
